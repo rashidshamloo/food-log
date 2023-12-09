@@ -2,19 +2,25 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
+model Entry {
+    id            Int      @id @default(autoincrement())
+    mealType      String
+    calories      Int
+    proteins      Int
+    carbs         Int
+    fats          Int
+    date          DateTime @default(now())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    @@index([name])
+    @@index([date])
 }
