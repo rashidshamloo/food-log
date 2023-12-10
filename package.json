@@ -13,6 +13,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.27.5",
     "@libsql/client": "0.4.0-pre.5",
     "@prisma/adapter-libsql": "^5.7.0",
     "@prisma/client": "^5.7.0",
