@@ -1,9 +1,11 @@
-import { SignIn, UserButton } from "@clerk/nextjs";
+// import { SignIn, UserButton } from "@clerk/nextjs";
+
+import AppInfo from "@/components/AppInfo";
 
 export default async function Home() {
   return (
     <main>
-      <UserButton afterSignOutUrl="/" />
+      <AppInfo />
     </main>
   );
 }
