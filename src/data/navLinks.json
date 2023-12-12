@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Today's Log",
+    "url": "/log"
+  },
+  {
+    "title": "History",
+    "url": "/log/history"
+  },
+  {
+    "title": "Add Entry",
+    "url": "/log/add"
+  }
+]

@@ -19,8 +19,9 @@ model Entry {
     carbs         Int
     fats          Int
     date          DateTime @default(now())
+    userId        String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    @@index([date])
+    @@index([userId])
 }
