@@ -28,7 +28,7 @@ export default function RootLayout({
       <html lang="en">
         <body
           className={cn(
-            "flex min-h-screen items-stretch justify-center bg-secondary p-8 font-sans text-foreground antialiased",
+            "flex min-h-screen w-[100vw] items-stretch justify-center bg-secondary p-8 font-sans text-foreground antialiased",
             fontSans.variable,
           )}
         >
