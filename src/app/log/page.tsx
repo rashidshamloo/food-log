@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs";
 import { type Entry } from "@prisma/client";
 
 import EntryCard from "@/components/EntryCard";
+import Title from "@/components/Title";
 import { db } from "@/lib/db";
 
 const Log = async () => {
@@ -34,7 +35,7 @@ const Log = async () => {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-8">
       <div className="flex flex-col items-center justify-center gap-2">
-        <h2 className="text-4xl font-bold">Today's Log</h2>
+        <Title>Today's Log</Title>
         <p className="text-sm">(enteries for {today})</p>
       </div>
 

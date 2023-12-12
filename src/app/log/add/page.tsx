@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 
 import addEntry from "@/actions/addEntry";
 import EntryFormField from "@/components/EntryFormField";
+import Title from "@/components/Title";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,7 +16,6 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { entryFormSchema as formSchema } from "@/schemas/forms";
@@ -45,61 +45,63 @@ const Add = () => {
   };
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex w-full items-center justify-center"
-      >
-        <Card className="w-full max-w-sm bg-secondary">
-          <CardHeader>
-            <CardTitle>Add Entry</CardTitle>
-            <CardDescription>
-              Create a new log entry for the meal you just had!
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <EntryFormField
-              name="mealType"
-              control={form.control}
-              label="Meal Type"
-              placeholder="Breakfast, Lunch, Dinner, Etc."
-            />
-            {Object.keys(formSchema.shape).map(
-              (field, i) =>
-                field !== "mealType" && (
-                  <EntryFormField
-                    key={i}
-                    name={field as keyof EntryFormType}
-                    control={form.control}
-                    suffix={field !== "calories" ? "g" : "kcal"}
-                    type="number"
-                  />
-                ),
-            )}
-          </CardContent>
-          <CardFooter className="block space-y-4">
-            <div className="flex w-full justify-end gap-4">
-              <Button variant="outline" onClick={() => router.push("/log")}>
-                Cancel
-              </Button>
-              {isLoading ? (
-                <Button disabled>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Add Entry
-                </Button>
-              ) : (
-                <Button type="submit">Add Entry</Button>
+    <div className="flex w-full flex-col items-center justify-center gap-8">
+      <Title>Add Entry</Title>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex w-full items-center justify-center"
+        >
+          <Card className="w-full max-w-sm bg-secondary">
+            <CardHeader>
+              <CardDescription>
+                Add a new log entry for the meal you just had!
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <EntryFormField
+                name="mealType"
+                control={form.control}
+                label="Meal Type"
+                placeholder="Breakfast, Lunch, Dinner, Etc."
+              />
+              {Object.keys(formSchema.shape).map(
+                (field, i) =>
+                  field !== "mealType" && (
+                    <EntryFormField
+                      key={i}
+                      name={field as keyof EntryFormType}
+                      control={form.control}
+                      suffix={field !== "calories" ? "g" : "kcal"}
+                      type="number"
+                    />
+                  ),
               )}
-            </div>
-            {isError && (
-              <small className="block text-center text-destructive">
-                Couldn't process your request. please try again.
-              </small>
-            )}
-          </CardFooter>
-        </Card>
-      </form>
-    </Form>
+            </CardContent>
+            <CardFooter className="block space-y-4">
+              <div className="flex w-full justify-end gap-4">
+                <Button variant="outline" onClick={() => router.push("/log")}>
+                  Cancel
+                </Button>
+                {isLoading ? (
+                  <Button disabled>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Add Entry
+                  </Button>
+                ) : (
+                  <Button type="submit">Add Entry</Button>
+                )}
+              </div>
+              {isError && (
+                <small className="block text-center text-destructive">
+                  Couldn't process your request. please try again.
+                </small>
+              )}
+            </CardFooter>
+          </Card>
+        </form>
+      </Form>
+    </div>
   );
 };
 

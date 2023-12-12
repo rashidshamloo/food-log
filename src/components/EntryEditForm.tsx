@@ -15,7 +15,6 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { entryFormSchema as formSchema } from "@/schemas/forms";
@@ -59,7 +58,6 @@ const EntryEditForm = ({
       >
         <Card className="w-full max-w-sm bg-secondary">
           <CardHeader>
-            <CardTitle>Edit Entry</CardTitle>
             <CardDescription>
               Edit any information you missed before!
             </CardDescription>

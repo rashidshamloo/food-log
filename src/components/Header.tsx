@@ -1,12 +1,9 @@
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
-import navLinksData from "@/data/navLinks.json";
-import { navLinksSchema } from "@/schemas/data";
+import navLinks from "@/data/navLinks.json";
 
 import Logo from "./Logo";
-
-const navLinks = navLinksSchema.parse(navLinksData);
 
 const Header = () => {
   return (

@@ -5,7 +5,7 @@ const config = {
     project: true,
     sourceType: "module",
   },
-  env: { es6: true },
+  // env: { es6: true },
   plugins: ["@typescript-eslint", "simple-import-sort", "import"],
   extends: [
     "plugin:@next/next/recommended",
