@@ -1,7 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import editEntry from "@/actions/editEntry";
@@ -24,6 +26,9 @@ const EntryEditForm = ({
 }: {
   entry: EntryFormType & { id: number };
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const router = useRouter();
   const form = useForm<EntryFormType>({
     resolver: zodResolver(formSchema),
@@ -34,21 +39,29 @@ const EntryEditForm = ({
 
   const onSubmit = async (values: EntryFormType) => {
     try {
+      setIsError(false);
+      setIsLoading(true);
       await editEntry({ id: entry.id, ...values });
       router.push("/log");
     } catch (e) {
+      setIsError(true);
       console.error(e);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <Card className="max-w-md bg-secondary">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex w-full items-center justify-center"
+      >
+        <Card className="w-full max-w-sm bg-secondary">
           <CardHeader>
             <CardTitle>Edit Entry</CardTitle>
             <CardDescription>
-              Edit any information you missed before.
+              Edit any information you missed before!
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -71,16 +84,30 @@ const EntryEditForm = ({
                 ),
             )}
           </CardContent>
-          <CardFooter className="flex justify-end gap-2">
-            <Button
-              variant="outline"
-              onClick={() => {
-                router.back();
-              }}
-            >
-              Cancel
-            </Button>
-            <Button type="submit">Submit</Button>
+          <CardFooter className="block space-y-4">
+            <div className="flex justify-end gap-2">
+              <Button
+                variant="outline"
+                onClick={() => {
+                  router.push("/log");
+                }}
+              >
+                Cancel
+              </Button>
+              {isLoading ? (
+                <Button disabled>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Edit Entry
+                </Button>
+              ) : (
+                <Button type="submit">Edit Entry</Button>
+              )}
+            </div>
+            {isError && (
+              <small className="block text-center text-destructive">
+                Couldn't process your request. please try again.
+              </small>
+            )}
           </CardFooter>
         </Card>
       </form>

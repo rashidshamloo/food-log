@@ -34,7 +34,7 @@ export default function RootLayout({
         >
           <div className="mx-auto flex w-full max-w-5xl flex-col items-stretch justify-stretch rounded-md bg-background p-8">
             <Header />
-            <main className="flex h-full items-start justify-center">
+            <main className="flex h-full w-full items-start justify-center">
               {children}
             </main>
           </div>

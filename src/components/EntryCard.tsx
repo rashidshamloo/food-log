@@ -1,8 +1,9 @@
 "use client";
 
 import type { Entry } from "@prisma/client";
+import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 import deleteEntry from "@/actions/deleteEntry";
 
@@ -28,13 +29,21 @@ import {
 } from "./ui/card";
 
 const EntryCard = ({ entry }: { entry: Entry }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const router = useRouter();
 
   const handleDelete = useCallback(async (id: number) => {
     try {
+      setIsError(false);
+      setIsLoading(true);
       await deleteEntry(id);
     } catch (e) {
+      setIsError(true);
       console.error(e);
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
@@ -52,38 +61,52 @@ const EntryCard = ({ entry }: { entry: Entry }) => {
         <p>Carbs : {entry.carbs} g</p>
         <p>Fats : {entry.fats} g</p>
       </CardContent>
-      <CardFooter className="flex justify-end gap-2">
-        <Button
-          variant="outline"
-          onClick={() => {
-            router.push("/log/edit/" + entry.id);
-          }}
-        >
-          Edit
-        </Button>
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button variant="destructive">Delete</Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete this
-                entry from our servers.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction
-                onClick={() => handleDelete(entry.id)}
-                className="bg-destructive hover:bg-destructive/90"
-              >
-                Delete
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+      <CardFooter className="block space-y-4">
+        <div className="flex justify-end gap-2">
+          <Button
+            variant="outline"
+            onClick={() => {
+              router.push("/log/edit/" + entry.id);
+            }}
+          >
+            Edit
+          </Button>
+          {isLoading ? (
+            <Button variant="destructive" disabled>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Delete
+            </Button>
+          ) : (
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive">Delete</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete
+                    this entry from our servers.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={() => handleDelete(entry.id)}
+                    className="bg-destructive hover:bg-destructive/90"
+                  >
+                    Delete
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          )}
+        </div>
+        {isError && (
+          <small className="block text-center text-destructive">
+            Couldn't process your request. please try again.
+          </small>
+        )}
       </CardFooter>
     </Card>
   );

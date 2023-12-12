@@ -46,8 +46,11 @@ const Add = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <Card className="max-w-md bg-secondary">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex w-full items-center justify-center"
+      >
+        <Card className="w-full max-w-sm bg-secondary">
           <CardHeader>
             <CardTitle>Add Entry</CardTitle>
             <CardDescription>
@@ -74,19 +77,23 @@ const Add = () => {
                 ),
             )}
           </CardContent>
-          <CardFooter className="flex justify-between">
-            {isLoading ? (
-              <Button disabled>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Please wait
+          <CardFooter className="block space-y-4">
+            <div className="flex w-full justify-end gap-4">
+              <Button variant="outline" onClick={() => router.push("/log")}>
+                Cancel
               </Button>
-            ) : (
-              <Button type="submit">Add Entry</Button>
-            )}
+              {isLoading ? (
+                <Button disabled>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Add Entry
+                </Button>
+              ) : (
+                <Button type="submit">Add Entry</Button>
+              )}
+            </div>
             {isError && (
-              <small className="text-destructive">
-                An error occured while processing your request. please try
-                again.
+              <small className="block text-center text-destructive">
+                Couldn't process your request. please try again.
               </small>
             )}
           </CardFooter>
