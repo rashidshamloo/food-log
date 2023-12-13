@@ -86,7 +86,7 @@ const EntryCard = ({ entry }: { entry: Entry }) => {
                   <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                   <AlertDialogDescription>
                     This action cannot be undone. This will permanently delete
-                    this entry from our servers.
+                    this log entry from our servers.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>

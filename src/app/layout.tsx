@@ -5,6 +5,7 @@ import { Poppins as FontSans } from "next/font/google";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ThemeLoader from "@/components/ThemeLoader";
 import { cn } from "@/lib/utils";
 
 const fontSans = FontSans({
@@ -27,9 +28,12 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+        <head>
+          <ThemeLoader />
+        </head>
         <body
           className={cn(
-            "dark flex min-h-screen w-[100vw] flex-col items-stretch justify-stretch overflow-x-hidden bg-secondary px-8 pb-0 pt-8 font-sans text-foreground antialiased",
+            "flex min-h-screen w-[100vw] flex-col items-stretch justify-stretch overflow-x-hidden bg-secondary px-8 pb-0 pt-8 font-sans text-foreground antialiased",
             fontSans.variable,
           )}
         >
