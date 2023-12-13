@@ -1,4 +1,4 @@
-import { UserButton } from "@clerk/nextjs";
+import { auth, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 import navLinks from "@/data/navLinks.json";
@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
 
 const Header = () => {
+  const { userId } = auth();
   return (
     <header className="mb-8 flex items-stretch justify-between border-b border-border">
       <nav className="flex items-stretch justify-center">
@@ -29,7 +30,9 @@ const Header = () => {
         <div className="header-link flex items-center justify-center transition-none">
           <ThemeSwitch />
         </div>
+
         <div className="header-link flex items-center justify-center">
+          {!userId && <SignInButton redirectUrl="/log" />}
           <UserButton afterSignOutUrl="/" />
         </div>
       </div>

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ThemeLoader from "@/components/ThemeLoader";
 import { cn } from "@/lib/utils";
+import { clerkStyles } from "@/styles/clerk";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -35,11 +36,12 @@ export default function RootLayout({
           className={cn(
             "flex min-h-screen w-[100vw] flex-col items-stretch justify-stretch overflow-x-hidden bg-secondary px-8 pb-0 pt-8 font-sans text-foreground antialiased",
             fontSans.variable,
+            clerkStyles,
           )}
         >
           <div className="mx-auto flex w-full max-w-5xl flex-grow flex-col items-stretch justify-stretch rounded-md bg-background p-8">
             <Header />
-            <main className="flex h-full w-full items-start justify-center">
+            <main className="flex w-full flex-grow items-start justify-center">
               {children}
             </main>
           </div>

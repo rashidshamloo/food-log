@@ -8,24 +8,27 @@ import { db } from "@/lib/db";
 const Log = async () => {
   const { userId } = auth();
 
-  const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
-
   let entries: Entry[] = [];
 
   if (userId) {
     try {
       entries = await db.entry.findMany({
         where: {
-          AND: {
-            userId: { equals: userId },
-            date: { gte: new Date(yesterday), lt: new Date() },
-          },
+          userId: { equals: userId },
         },
       });
     } catch (e) {
       console.log(e);
     }
   }
+
+  entries = entries.filter(
+    (entry) =>
+      entry.date
+        .toISOString()
+        .split("T")[0]
+        ?.includes(new Date().toISOString().split("T")[0] ?? "null"),
+  );
 
   const today = new Date().toLocaleDateString();
   const totalCalories = entries.reduce((acc, v) => acc + v.calories, 0);

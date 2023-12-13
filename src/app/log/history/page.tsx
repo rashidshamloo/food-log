@@ -14,6 +14,7 @@ const History = async () => {
   try {
     entries = await db.entry.findMany({
       where: { userId: { equals: userId } },
+      orderBy: { date: "desc" },
     });
   } catch (e) {
     console.log(e);
@@ -32,9 +33,9 @@ const History = async () => {
       {Object.keys(entriesByDate).map((date, i) => (
         <div
           key={i}
-          className="flex w-full flex-col items-center justify-center gap-8 [&:not(:last-child)]:border-b"
+          className="flex w-full flex-col items-center justify-center gap-8 [&:not(:last-child)]:border-b [&:not(:last-child)]:pb-8"
         >
-          <p>Entries for {date}</p>
+          <p className="text-lg">Entries for {date}</p>
           <div className="flex flex-wrap items-center justify-center gap-8 text-sm">
             <p>
               Total Calories:{" "}
