@@ -10,25 +10,23 @@ const Log = async () => {
 
   let entries: Entry[] = [];
 
-  if (userId) {
+  const todayDateString =
+    new Date().toISOString().split("T")[0] + "T00:00:00.000+00:00" ?? "";
+
+  if (userId && todayDateString) {
     try {
       entries = await db.entry.findMany({
         where: {
-          userId: { equals: userId },
+          AND: {
+            userId: { equals: userId },
+            date: { gte: todayDateString },
+          },
         },
       });
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
-
-  entries = entries.filter(
-    (entry) =>
-      entry.date
-        .toISOString()
-        .split("T")[0]
-        ?.includes(new Date().toISOString().split("T")[0] ?? "null"),
-  );
 
   const today = new Date().toLocaleDateString();
   const totalCalories = entries.reduce((acc, v) => acc + v.calories, 0);
