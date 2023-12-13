@@ -36,11 +36,13 @@ const History = async () => {
           className="flex w-full flex-col items-center justify-center gap-8 [&:not(:last-child)]:border-b [&:not(:last-child)]:pb-8"
         >
           <p className="text-lg">Entries for {date}</p>
-          <div className="flex flex-wrap items-center justify-center gap-8 text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-8">
             <p>
               Total Calories:{" "}
               <span className="text-primary">
-                {entriesByDate[date]?.reduce((acc, v) => acc + v.calories, 0)}{" "}
+                {entriesByDate[date]
+                  ?.reverse()
+                  .reduce((acc, v) => acc + v.calories, 0)}{" "}
                 kcal
               </span>
             </p>

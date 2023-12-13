@@ -11,9 +11,9 @@ const Log = async () => {
   let entries: Entry[] = [];
 
   const todayDateString =
-    new Date().toISOString().split("T")[0] + "T00:00:00.000+00:00" ?? "";
+    new Date().toISOString().split("T")[0] + "T00:00:00.000+00:00";
 
-  if (userId && todayDateString) {
+  if (userId) {
     try {
       entries = await db.entry.findMany({
         where: {
@@ -35,12 +35,9 @@ const Log = async () => {
   const totalFats = entries.reduce((acc, v) => acc + v.fats, 0);
   return (
     <div className="flex w-full flex-col items-center justify-center gap-8">
-      <div className="flex flex-col items-center justify-center gap-2">
-        <Title>Today's Log</Title>
-        <p className="text-sm">(enteries for {today})</p>
-      </div>
-
-      <div className="flex flex-wrap items-center justify-center gap-8 text-lg">
+      <Title>Today's Log</Title>
+      <p className="text-lg">Entries for {today}</p>
+      <div className="flex flex-wrap items-center justify-center gap-8">
         <p>
           Total Calories:{" "}
           <span className="text-primary">{totalCalories} kcal</span>
