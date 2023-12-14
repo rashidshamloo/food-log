@@ -9,6 +9,8 @@ import ThemeSwitch from "./ThemeSwitch";
 
 const Header = () => {
   const { userId } = auth();
+  const a = auth();
+  console.log(a);
   return (
     <header className="relative flex min-h-[50px] items-stretch justify-between border-b border-border px-4 md:px-0">
       <nav className="flex items-stretch justify-center">
