@@ -36,7 +36,7 @@ const History = async () => {
           className="flex w-full flex-col items-center justify-center gap-8 [&:not(:last-child)]:border-b [&:not(:last-child)]:pb-8"
         >
           <p className="text-lg">Entries for {date}</p>
-          <div className="flex flex-wrap items-center justify-center gap-8">
+          <div className="flex flex-col flex-wrap items-center justify-center gap-2 md:flex-row md:gap-8">
             <p>
               Total Calories:{" "}
               <span className="text-primary">

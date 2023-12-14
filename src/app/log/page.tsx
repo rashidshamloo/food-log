@@ -37,7 +37,7 @@ const Log = async () => {
     <div className="flex w-full flex-col items-center justify-center gap-8">
       <Title>Today's Log</Title>
       <p className="text-lg">Entries for {today}</p>
-      <div className="flex flex-wrap items-center justify-center gap-8">
+      <div className="flex flex-col flex-wrap items-center justify-center gap-2 md:flex-row md:gap-8">
         <p>
           Total Calories:{" "}
           <span className="text-primary">{totalCalories} kcal</span>
