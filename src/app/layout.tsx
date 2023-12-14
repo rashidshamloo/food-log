@@ -20,13 +20,13 @@ const fontSans = FontSans({
 // metadata
 export const metadata: Metadata = {
   title: "Food Log by Rashid Shamloo",
-  description: "Food nutritent tracking application by Rashid Shamloo",
+  description: "Food nutrient tracking application by Rashid Shamloo",
   keywords: [
     "food",
     "tracking",
     "log",
     "diet",
-    "nutritent",
+    "nutrient",
     "application",
     "rashid shamloo",
   ],
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     url: "/",
     title: "Food Log by Rashid Shamloo",
     siteName: "Food Log by Rashid Shamloo",
-    description: "Food nutritent tracking application by Rashid Shamloo",
+    description: "Food nutrient tracking application by Rashid Shamloo",
     images: {
       url: "/home.webp",
       alt: "Food Log by Rashid Shamloo",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Food Log by Rashid Shamloo",
-    description: "Food nutritent tracking application by Rashid Shamloo",
+    description: "Food nutrient tracking application by Rashid Shamloo",
     images: "/home.webp",
     creator: "@rashidshamloo",
     site: "@rashidshamloo",
