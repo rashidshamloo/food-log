@@ -26,8 +26,8 @@ const AppInfo = () => {
         className="md:max-w-[70%]"
         priority
       />
-      <div className="mt-8">
-        <Button className="mr-8 text-lg" asChild>
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
+        <Button className="text-lg" asChild>
           <Link href="/signup">Sign up and start using now!</Link>
         </Button>
         <Button variant="secondary" className="text-lg" asChild>
