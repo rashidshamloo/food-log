@@ -71,7 +71,7 @@ export default function RootLayout({
         </head>
         <body
           className={cn(
-            "flex min-h-screen flex-col items-stretch justify-stretch overflow-x-hidden bg-secondary font-sans text-foreground antialiased md:w-[100vw] md:px-8 md:pt-8",
+            "relative left-[calc((100vw_-_100%)_/_2)] flex min-h-screen flex-col items-stretch justify-stretch overflow-x-hidden bg-secondary font-sans text-foreground antialiased md:px-8 md:pt-8",
             fontSans.variable,
             clerkStyles,
           )}
