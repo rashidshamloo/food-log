@@ -1,4 +1,4 @@
-import { currentUser, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 import navLinks from "@/data/navLinks.json";
@@ -7,10 +7,7 @@ import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 import ThemeSwitch from "./ThemeSwitch";
 
-const Header = async () => {
-  const user = await currentUser();
-  const userId = user ? user.id : "";
-
+const Header = () => {
   return (
     <header className="relative flex min-h-[50px] items-stretch justify-between border-b border-border px-4 md:px-0">
       <nav className="flex items-stretch justify-center">
@@ -38,8 +35,12 @@ const Header = async () => {
         </div>
 
         <div className="header-link flex items-center justify-center">
-          {!userId && <SignInButton redirectUrl="/log" />}
-          <UserButton afterSignOutUrl="/" />
+          <SignedOut>
+            <SignInButton redirectUrl="/log" />
+          </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
         </div>
       </div>
     </header>
