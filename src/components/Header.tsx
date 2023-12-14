@@ -33,7 +33,6 @@ const Header = () => {
         <div className="header-link flex items-center justify-center transition-none">
           <ThemeSwitch />
         </div>
-
         <div className="header-link flex items-center justify-center">
           <SignedOut>
             <SignInButton redirectUrl="/log" />
