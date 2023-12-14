@@ -10,6 +10,7 @@ import Logo from "./Logo";
 import { Button } from "./ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -26,7 +27,7 @@ const MobileMenu = () => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left">
-          <SheetHeader>
+          <SheetHeader className="mt-8">
             <SheetTitle>
               <Link href="/" title="Home" className="header-link h-full">
                 <Logo />
@@ -36,9 +37,11 @@ const MobileMenu = () => {
           <ul className="flex flex-col items-center justify-center gap-6 py-6">
             {navLinks.map((navItem, i) => (
               <li key={i}>
-                <Link href={navItem.url} className="header-link h-full">
-                  {navItem.title}
-                </Link>
+                <SheetClose asChild>
+                  <Link href={navItem.url} className="header-link h-full">
+                    {navItem.title}
+                  </Link>
+                </SheetClose>
               </li>
             ))}
           </ul>
