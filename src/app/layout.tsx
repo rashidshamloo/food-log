@@ -10,8 +10,6 @@ import ThemeLoader from "@/components/ThemeLoader";
 import { cn } from "@/lib/utils";
 import { clerkStyles } from "@/styles/clerk";
 
-export const runtime = "edge";
-
 // fonts
 const fontSans = FontSans({
   subsets: ["latin"],

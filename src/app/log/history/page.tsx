@@ -6,8 +6,6 @@ import EntryCard from "@/components/EntryCard";
 import Title from "@/components/Title";
 import { db } from "@/lib/db";
 
-export const runtime = "edge";
-
 const History = async () => {
   const { userId } = auth();
   if (!userId) return <div>No history found.</div>;

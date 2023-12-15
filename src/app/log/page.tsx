@@ -5,8 +5,6 @@ import EntryCard from "@/components/EntryCard";
 import Title from "@/components/Title";
 import { db } from "@/lib/db";
 
-export const runtime = "edge";
-
 const Log = async () => {
   const { userId } = auth();
 

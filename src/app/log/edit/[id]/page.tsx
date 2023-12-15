@@ -4,8 +4,6 @@ import EntryEditForm from "@/components/EntryEditForm";
 import Title from "@/components/Title";
 import { db } from "@/lib/db";
 
-export const runtime = "edge";
-
 const Edit = async ({ params }: { params: { id: string } }) => {
   const id = Number(params.id);
 
