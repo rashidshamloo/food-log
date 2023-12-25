@@ -8,7 +8,7 @@ Live Demo: [https://food-log.rashidshamloo.com/](https://food-log.rashidshamloo.
 
 ## Database
 
-I used Turso as the database for this project. At first, I wanted to use PlanetScale (MySQL) but it needed a credit card for creating the DB, Then I decided to use Vercel's PostgreSQL DB, but the limit is 1 per free account and I'm already using one in another project. In the end, after some research, I decided to go with Turso as it has a generous free offering and is more than adequate for this project. I had to use WSL2 to run the Turso CLI, and ran into some problems like the Prisma Accelerate not being compatible with libSQL but I enjoyed using it and will continue to do so in my future projects.
+I used Turso as the database for this project. At first, I wanted to use PlanetScale (MySQL) but it needed a credit card for creating the DB, Then I decided to use Vercel's PostgreSQL DB, but the limit is 1 per free account and I'm already using one in another project. In the end, after some research, I decided to go with Turso as it has a generous free offering and is more than adequate for this project. I had to use WSL2 to run the Turso CLI and ran into some problems like the Prisma Accelerate not being compatible with libSQL but I enjoyed using it and will continue to do so in my future projects.
 
 ## ORM
 
@@ -18,17 +18,21 @@ I used Prisma as the ORM and I enjoyed using it. even though Turso is a new tech
 
 For CRUD operations, I used RSC (React Server Components) and Server Actions exclusively. There is no state stored on the client and the entries are retrieved and processed on the server using RSC and the final rendered HTML is set to the user. For modifying the data, I called server actions from inside client components to do the work on the server for faster processing and keeping the backend isolated from the user/front-end.
 
-# Design/Layout
+## Design/Layout
 
-I used the Shadcn component library for the design/layout. I looked at several other component libraries but they all needed a provider added to the layout which forced all children components to be client components and interfered with what I wanted to achieve (I could import server components in the roort layout and prop drill them into client components but i didn't like that approach). I also liked the different components provided by shadcn and it's ease of use. I will use it again in future projects as well.
+I used the Shadcn component library for the design/layout. I looked at several other component libraries but they all needed a provider added to the layout which forced all children components to be client components and interfered with what I wanted to achieve (I could import server components in the root layout and prop drill them into client components but I didn't like that approach). I also liked the different components provided by Shadcn and its ease of use. I will use it again in future projects as well.
 
 ## Dark/Light Switch
 
-While it sounds like a trivial task, with RSC (React Server Components), it's not easy to implement a them switch with no flashes on page load since the server can't know what each client has set as their preference and when the rendered HTML is different, it results in hydration errors. In order to solve the issue, I wrote my own theme switching code that works without any issues overall (inspired by the theme switching in Mantine).
+While it sounds like a trivial task, with RSC (React Server Components), it's not easy to implement a theme switch with no flashes on page load since the server can't know what each client has set as their preference and when the rendered HTML is different, it results in hydration errors. In order to solve the issue, I wrote my own theme-switching code that works without any issues overall (inspired by the theme-switching in Mantine).
 
 ## User Authentication
 
 I used Clerk for user authentication. It's relatively easy to set up and provides simple React components you can add to your page to display the user button, sign-in/up form, etc. The only problem is that in production it requires you to have your own domain and set it up to be used by Clerk which fortunately I already had. I also customized how different Clerk UI elements look to match the design.
+
+## Form Validation
+
+For form validation, I used react-hook-form with Zod resolver. It makes the validation process easier and more straightforward. An issue I ran into was that I used input fields with type="number" for different nutrient values but since an input field's value is always a string, I couldn't just use `z.number()`, instead I had to learn and try different Zod methods like `z.coerce`, `z.transform()`, `z.preprocess()`, and `z.refine()` to properly validate the fields. what I ended up with is `z.string().refine((n) => !isNaN(Number(n)), "Please enter a number")`. Another issue was the default value of the input fields when using `defaultValues: { ...schema.parse(...) }`. It caused the `value` of the input fields to be undefined and the error message: `A component is changing a controlled input to be uncontrolled.`. To solve it, instead of manually adding an empty string for each key in `defaultValues`, I destructured the field variable (`render={({ field: { value, ...rest } }) => (`) and added `value={value ?? ''}` to the `FormField` which will take care of it for all input fields.
 
 ## Misc.
 
@@ -36,7 +40,7 @@ I used Object.groupBy() for grouping entries by date and displaying them, added 
 
 ## Conclusion
 
-I enjoyed working with RSC (React Server Components) and Server Actions. When using them, there's no need for a state management library like Redux and the response time is fast since the processing is done on the server and the server has a much faster connection to the databse as well. I'm not sure if every part of a bigger application can be implemented using them but for this project, they worked great.
+I enjoyed working with RSC (React Server Components) and Server Actions. When using them, there's no need for a state management library like Redux and the response time is fast since the processing is done on the server and the server has a much faster connection to the database as well. I'm not sure if every part of a bigger application can be implemented using them but for this project, they worked great.
 
 ## Tech Stack
 - TypeScript
@@ -44,6 +48,8 @@ I enjoyed working with RSC (React Server Components) and Server Actions. When us
 - Next.js v14
 - Tailwind CSS
 - Shadcn
+- react-hook-form
+- Zod
 - Prisma
 - Turso
 - Clerk
