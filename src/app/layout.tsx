@@ -76,6 +76,7 @@ export default function RootLayout({
             clerkStyles,
           )}
         >
+          <h1 className="sr-only">Food Log</h1>
           <div className="mx-auto flex w-full max-w-5xl flex-grow flex-col items-stretch justify-stretch rounded-md bg-background md:p-8">
             <Header />
             <main className="flex w-full flex-grow items-start justify-center px-8 py-8 md:px-0 md:pb-0">

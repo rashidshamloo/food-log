@@ -22,7 +22,7 @@ const MobileMenu = () => {
     <div className="flex h-full items-center justify-center">
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant={null} className="p-0">
+          <Button variant={null} className="p-0" title="Mobile Menu">
             <Menu className="border-none" size={32} />
           </Button>
         </SheetTrigger>

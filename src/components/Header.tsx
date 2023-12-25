@@ -11,6 +11,7 @@ const Header = () => {
   return (
     <header className="relative flex min-h-[50px] items-stretch justify-between border-b border-border px-4 md:px-0">
       <nav className="flex items-stretch justify-center">
+        <h2 className="sr-only">Navigation Menu</h2>
         <ul className="flex items-stretch justify-center gap-8 font-medium">
           <li className="md:hidden">
             <MobileMenu />
