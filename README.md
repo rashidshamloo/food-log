@@ -8,7 +8,7 @@ Live Demo: [https://food-log.rashidshamloo.com/](https://food-log.rashidshamloo.
 
 ## Database
 
-I used Turso as the database for this project. At first, I wanted to use PlanetScale (MySQL) but it needed a credit card for creating the DB, Then I decided to use Vercel's PostgreSQL DB, but the limit is 1 per free count and I'm already using one in another project. In the end, after some research, I decided to go with Turso as it has a generous free offering and is more than adequate for this project. I had to use WSL2 to run the Turso CLI, and ran into some problems like the Prisma Accelerate not being compatible with libSQL but I enjoyed using it and will continue to do so in my future projects.
+I used Turso as the database for this project. At first, I wanted to use PlanetScale (MySQL) but it needed a credit card for creating the DB, Then I decided to use Vercel's PostgreSQL DB, but the limit is 1 per free acount and I'm already using one in another project. In the end, after some research, I decided to go with Turso as it has a generous free offering and is more than adequate for this project. I had to use WSL2 to run the Turso CLI, and ran into some problems like the Prisma Accelerate not being compatible with libSQL but I enjoyed using it and will continue to do so in my future projects.
 
 ## ORM
 
