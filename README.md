@@ -56,6 +56,45 @@ I enjoyed working with RSC (React Server Components) and Server Actions. When us
 
 ## Screenshots
 
+- Desktop
+  - Light
+
+   <a href="/screenshots/desktop-home-light.png"><img src="/screenshots/desktop-home-light.png" alt="Screenshot" height="150px"/></a>
+   <a href="/screenshots/desktop-log-history-light.png"><img src="/screenshots/desktop-log-history-light.png" alt="Screenshot" height="150px"/></a>
+   <a href="/screenshots/desktop-add-entry-light.png"><img src="/screenshots/desktop-add-entry-light.png" alt="Screenshot" height="150px"/></a>
+   <a href="/screenshots/desktop-sign-up-light.png"><img src="/screenshots/desktop-sign-up-light.png" alt="Screenshot" height="150px"/></a>
+   <a href="/screenshots/desktop-sign-in-light.png"><img src="/screenshots/desktop-sign-in-light.png" alt="Screenshot" height="150px"/></a>
+   <a href="/screenshots/desktop-profile-light.png"><img src="/screenshots/desktop-profile-light.png" alt="Screenshot" height="150px"/></a>
+
+  - Dark
+
+  <a href="/screenshots/desktop-home-dark.png"><img src="/screenshots/desktop-home-dark.png" alt="Screenshot" height="150px"/></a>
+  <a href="/screenshots/desktop-log-history-dark.png"><img src="/screenshots/desktop-log-history-dark.png" alt="Screenshot" height="150px"/></a>
+  <a href="/screenshots/desktop-add-entry-dark.png"><img src="/screenshots/desktop-add-entry-dark.png" alt="Screenshot" height="150px"/></a>
+  <a href="/screenshots/desktop-sign-up-dark.png"><img src="/screenshots/desktop-sign-up-dark.png" alt="Screenshot" height="150px"/></a>
+  <a href="/screenshots/desktop-sign-in-dark.png"><img src="/screenshots/desktop-sign-in-dark.png" alt="Screenshot" height="150px"/></a>
+  <a href="/screenshots/desktop-profile-dark.png"><img src="/screenshots/desktop-profile-dark.png" alt="Screenshot" height="150px"/></a>
+
+- Mobile
+
+  - Light
+
+   <a href="/screenshots/mobile-home-light.png"><img src="/screenshots/mobile-home-light.png" alt="Screenshot" height="200px"/></a>
+   <a href="/screenshots/mobile-log-history-light.png"><img src="/screenshots/mobile-log-history-light.png" alt="Screenshot" height="200px"/></a>
+   <a href="/screenshots/mobile-add-entry-light.png"><img src="/screenshots/mobile-add-entry-light.png" alt="Screenshot" height="200px"/></a>
+   <a href="/screenshots/mobile-sign-up-light.png"><img src="/screenshots/mobile-sign-up-light.png" alt="Screenshot" height="200px"/></a>
+   <a href="/screenshots/mobile-sign-in-light.png"><img src="/screenshots/mobile-sign-in-light.png" alt="Screenshot" height="200px"/></a>
+   <a href="/screenshots/mobile-profile-light.png"><img src="/screenshots/mobile-profile-light.png" alt="Screenshot" height="200px"/></a>
+
+  - Dark
+
+  <a href="/screenshots/mobile-home-dark.png"><img src="/screenshots/mobile-home-dark.png" alt="Screenshot" height="200px"/></a>
+  <a href="/screenshots/mobile-log-history-dark.png"><img src="/screenshots/mobile-log-history-dark.png" alt="Screenshot" height="200px"/></a>
+  <a href="/screenshots/mobile-add-entry-dark.png"><img src="/screenshots/mobile-add-entry-dark.png" alt="Screenshot" height="200px"/></a>
+  <a href="/screenshots/mobile-sign-up-dark.png"><img src="/screenshots/mobile-sign-up-dark.png" alt="Screenshot" height="200px"/></a>
+  <a href="/screenshots/mobile-sign-in-dark.png"><img src="/screenshots/mobile-sign-in-dark.png" alt="Screenshot" height="200px"/></a>
+  <a href="/screenshots/mobile-profile-dark.png"><img src="/screenshots/mobile-profile-dark.png" alt="Screenshot" height="200px"/></a>
+
 ## Author
 Rashid Shamloo
 
