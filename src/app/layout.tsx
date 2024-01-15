@@ -64,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider afterSignUpUrl="/log" afterSignInUrl="/log">
       <html lang="en">
         <head>
           <ThemeLoader />
